@@ -6,10 +6,9 @@
 //  Copyright (c) 2013 Andrei. All rights reserved.
 //
 
-#import "APViewModel.h"
 #import "APTableCellViewModel.h"
 
-@interface APTableSectionViewModel : APViewModel
+@interface APTableSectionViewModel : NSObject
 
 @property (nonatomic, strong) NSArray *cells;
 

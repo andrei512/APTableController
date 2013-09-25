@@ -1,1 +1,24 @@
+PODS:
+  - APUtils (1.0.0):
+    - MAObjCRuntime
+    - ReactiveCocoa
+  - MAObjCRuntime (0.0.1)
+  - ReactiveCocoa (2.0):
+    - ReactiveCocoa/Core
+    - ReactiveCocoa/no-arc
+    - ReactiveCocoa/RACExtensions
+  - ReactiveCocoa/Core (2.0):
+    - ReactiveCocoa/no-arc
+  - ReactiveCocoa/no-arc (2.0)
+  - ReactiveCocoa/RACExtensions (2.0):
+    - ReactiveCocoa/Core
+
+DEPENDENCIES:
+  - APUtils
+
+SPEC CHECKSUMS:
+  APUtils: 10ee25d13b049f0052df6e6cc075fccbfae1af3c
+  MAObjCRuntime: 284004079156d10cb8237bc3ffcfa3a0e1a0af22
+  ReactiveCocoa: 04f49b91365cc946e7ca327bcfb5765fcea69e76
+
 COCOAPODS: 0.25.0

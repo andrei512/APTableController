@@ -8,7 +8,6 @@
 
 #import "APTableCell.h"
 
-
 typedef void(^APTableViewCellActionBlock)(APTableCell *);
 typedef void(^APTableViewActionBlock)(void);
 

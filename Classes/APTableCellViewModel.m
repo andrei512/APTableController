@@ -8,6 +8,9 @@
 
 #import "APTableCellViewModel.h"
 
+#import <NSObject+APUtils.h>
+#import <NSString+APUtils.h>
+
 @implementation APTableCellViewModel
 
 - (id)init {
