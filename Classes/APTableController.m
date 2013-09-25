@@ -11,7 +11,13 @@
 @implementation APTableController
 
 - (void)reloadWithData:(id)data {
+    [self reloadTableView:self.tableView WithData:data];
+}
+
+- (void)reloadTableView:(UITableView *)tableView withData:(id)data {
+    self.tableView = tableView;
     
+    [self realoadTableView];
 }
 
 - (void)realoadTableView {

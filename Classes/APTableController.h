@@ -17,6 +17,8 @@
 
 - (void)reloadWithData:(id)data;
 
+- (void)reloadTableView:(UITableView *)tableView withData:(id)data;
+
 - (int)numberOfSections;
 
 - (void)realoadTableView;
