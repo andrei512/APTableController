@@ -7,20 +7,20 @@ APTableController
 
 In your Xib/Storyboard connect the tableView IBOutlet from APTableController with the table view
 
-``` objective-c
-[tableController reloadWithData:@[@"this is a cell", @"and this is also a cell"]];
-```
+### A simple cell
 
 ``` objective-c
 [self.tableController reloadWithData:@"A simple cell"];
 ```
 ![One cell](http://i.imgur.com/SdXQe2Z.png)
 
+### Many cells
 ``` objective-c
 [self.tableController reloadWithData:@[@"cell #1", @"cell #2", @"cell #3"]];
 ```
 ![Many cells](http://i.imgur.com/jXPYCUi.png)
 
+### Custom loading
 ``` objective-c
 [self.tableController reloadWithData:@[
     @{
@@ -35,6 +35,7 @@ In your Xib/Storyboard connect the tableView IBOutlet from APTableController wit
 ```
 ![Many cells with color](http://i.imgur.com/fHJc1RQ.png)
 
+### Handling didSelect
 ``` objective-c
 [self.tableController reloadWithData:@[
     @{
@@ -53,6 +54,7 @@ In your Xib/Storyboard connect the tableView IBOutlet from APTableController wit
 ```
 ![Many cells with action](http://i.imgur.com/bZXSe3h.png)
 
+### Many sections
 ``` objective-c
 [self.tableController reloadWithData:@[
     @[@"cell #1.1", @"cell #1.2", @"cell #1.3"],
