@@ -7,48 +7,27 @@
 //
 
 #import "APTableSectionViewModel.h"
+#import "APTableController.h"
 #import <NSArray+APUtils.h>
 #import <NSObject+APUtils.h>
 
 @implementation APTableSectionViewModel
 
+- (id)init {
+    if (self = [super init]) {
+        self.cells = @[];
+    }
+    return self;
+}
+
 + (instancetype)sectionWithCells:(NSArray *)cells {
     APTableSectionViewModel *section = [self new];
-    
     section.cells = cells;
-    
     return section;
 }
 
 - (int)numberOfCells {
     return self.cells.count;
-}
-
-- (void)normalizeData {
-    // TO DO : figure out how to optimize this code
-    self.cells = [self.cells map:^id(id cell) {
-        if ([cell isKindOfClass:[APTableCellViewModel class]] == YES) {
-            return cell;
-        } else if ([cell isKindOfClass:[NSDictionary class]] == YES) {
-            APTableCellViewModel *hashCell = [APTableCellViewModel cellModel];
-            
-            [hashCell loadHash:(NSDictionary *)cell];
-            hashCell.cellIdentifier = [NSString stringWithFormat:@"%d", (int)cell];
-            
-            return hashCell;
-        } else {
-            APTableCellViewModel *objectCellModel = [APTableCellViewModel cellModel];
-            
-            NSObject *object = cell;
-            
-            objectCellModel.onLoad = ^(APTableCell *cell) {
-                cell.textLabel.text = [NSString stringWithFormat:@"%@", object];
-            };
-            objectCellModel.cellIdentifier = [NSString stringWithFormat:@"%d", (int)object];
-            
-            return objectCellModel;
-        }
-    }];
 }
 
 - (NSString *)description {

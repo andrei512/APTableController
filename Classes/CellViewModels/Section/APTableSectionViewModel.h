@@ -8,14 +8,16 @@
 
 #import "APTableCellViewModel.h"
 
+@class APTableController;
+
 @interface APTableSectionViewModel : NSObject
 
+@property (nonatomic, weak) APTableController *tableController;
 @property (nonatomic, strong) NSArray *cells;
 
 + (instancetype)sectionWithCells:(NSArray *)cells;
 
 - (int)numberOfCells;
 
-- (void)normalizeData;
 
 @end

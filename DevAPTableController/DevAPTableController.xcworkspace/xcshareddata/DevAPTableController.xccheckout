@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>A8C0981B-F8BD-433D-9FE7-15C3911E29C2</string>
+	<key>IDESourceControlProjectName</key>
+	<string>DevAPTableController</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>774A8F28-E37B-477D-8C6F-8BAF1CC10500</key>
+		<string>https://github.com/andrei512/APTableController</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>DevAPTableController/DevAPTableController.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>774A8F28-E37B-477D-8C6F-8BAF1CC10500</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/andrei512/APTableController</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>774A8F28-E37B-477D-8C6F-8BAF1CC10500</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>774A8F28-E37B-477D-8C6F-8BAF1CC10500</string>
+			<key>IDESourceControlWCCName</key>
+			<string>APTableController</string>
+		</dict>
+	</array>
+</dict>
+</plist>

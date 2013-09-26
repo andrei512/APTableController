@@ -24,7 +24,7 @@
         @{
             kObject : @"hash cell",
             kOnLoad : ^(APTableCell *cell) {
-                NSLog(@"yey");
+                cell.frame = CGRectMake(0, 0, 320, 80);
             }
         },
         @[
@@ -34,6 +34,24 @@
         ]
     ];
     PO([self.tableController sectionsFromData:nestedArray])
+    
+    NSMutableArray *longArray = [NSMutableArray array];
+    
+    for (int i = 0; i < 100; ++i) {
+        NSString *cellTitle = [NSString stringWithFormat:@"cell #%d", i];
+        if (i % 2 == 0) {
+            [longArray addObject:@{
+                kObject : cellTitle
+            }];
+        } else {
+            [longArray addObject:@{
+                kObject : cellTitle,
+                kOnLoad : ^(APTableCell *cell) {
+                    cell.backgroundColor = [UIColor redColor];
+                }
+             }];
+        }
+    }
     
     [self.tableController reloadWithData:nestedArray];
 }

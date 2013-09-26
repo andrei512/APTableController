@@ -30,6 +30,7 @@ extern NSString * const kNibName;
 // blocks and magic
 
 @property (nonatomic, copy) APTableViewCellActionBlock onLoad;
+@property (nonatomic, copy) APTableViewCellActionBlock beforeReuse;
 @property (nonatomic, copy) APTableViewActionBlock onSelect;
 
 

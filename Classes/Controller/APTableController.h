@@ -24,6 +24,7 @@
 - (void)reloadTableView:(UITableView *)tableView withData:(NSObject *)data;
 
 - (int)numberOfSections;
+- (int)numberOfRowsInSection:(int)sectionIndex;
 
 - (void)realoadTableView;
 

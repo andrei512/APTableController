@@ -9,7 +9,27 @@
 #import "APTableController.h"
 #import <NSArray+APUtils.h>
 
+@interface APTableController()
+
+@property (nonatomic, strong) NSMutableDictionary *nibStash;
+@property (nonatomic, strong) NSMutableDictionary *cellStash;
+
+@end
+
 @implementation APTableController
+
+#pragma mark - init/create
+
+- (id)init {
+    if (self = [super init]) {
+        self.nibStash = [NSMutableDictionary dictionary];
+        self.cellStash = [NSMutableDictionary dictionary];
+        self.sections = @[];
+    }
+    return self;
+}
+
+#pragma mark - Reloading
 
 - (void)reloadWithData:(id)data {
     [self reloadTableView:self.tableView withData:data];
@@ -23,21 +43,20 @@
 }
 
 - (void)realoadTableView {
-    // To do: optimize stash with APUtils
-    NSMutableDictionary *nibStash = [NSMutableDictionary dictionary];
-    
     NSMutableSet *registeredIdentifiers = [NSMutableSet set];
     
     for (APTableSectionViewModel *section in self.sections) {
+        section.tableController = self;
+        
         for (APTableCellViewModel *cell in section.cells) {
             // create nib if it does not exist
-            if (nibStash[cell.nibName] == nil) {
-                nibStash[cell.nibName] = [UINib nibWithNibName:cell.nibName bundle:nil];
+            if (self.nibStash[cell.nibName] == nil) {
+                self.nibStash[cell.nibName] = [UINib nibWithNibName:cell.nibName bundle:nil];
             }
             
             // register the nib by the cell identifier
             if ([registeredIdentifiers containsObject:cell.cellIdentifier] == NO) {
-                [self.tableView registerNib:nibStash[cell.nibName]
+                [self.tableView registerNib:self.nibStash[cell.nibName]
                      forCellReuseIdentifier:cell.cellIdentifier];
             }
             
@@ -59,6 +78,11 @@
 
 - (int)numberOfSections {
     return self.sections.count;
+}
+
+- (int)numberOfRowsInSection:(int)sectionIndex {
+    APTableSectionViewModel *section = self.sections[sectionIndex];
+    return section.numberOfCells;
 }
 
 - (APTableCellViewModel *)cellViewModelAtIndexPath:(NSIndexPath *)indexPath {
@@ -83,8 +107,7 @@
 }
 
 - (int)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)sectionIndex {
-    APTableSectionViewModel *section = self.sections[sectionIndex];
-    return section.numberOfCells;
+    return [self numberOfRowsInSection:sectionIndex];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -107,7 +130,19 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    APTableCell *cell = (APTableCell *)[self tableView:tableView cellForRowAtIndexPath:indexPath];
+    APTableCellViewModel *cellViewModel = [self cellViewModelAtIndexPath:indexPath];
+    
+    // keep another cell of the same type in a stash
+    if (self.cellStash[cellViewModel.cellIdentifier] == nil) {
+        self.cellStash[cellViewModel.cellIdentifier] = [self tableView:tableView cellForRowAtIndexPath:indexPath];
+    }
+    
+    APTableCell *cell = (APTableCell *)self.cellStash[cellViewModel.cellIdentifier];
+    
+    // load that cell in order to get the height
+    [cell prepareForReuse];
+    [cell loadViewModel:cellViewModel];
+
     return cell.frame.size.height;
 }
 

@@ -12,6 +12,8 @@
 
 @interface APTableCell : UITableViewCell
 
+@property (nonatomic, weak) APTableCellViewModel *viewModel;
+
 - (void)loadViewModel:(APTableCellViewModel *)cellViewModel;
 
 @end
