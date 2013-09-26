@@ -3,31 +3,76 @@ APTableController
 
 ! Work in progress
 
-## How to
-
-### With Xibs/Storyboards
-
-In your Xib/Storyboard connect the tableView IBOutlet from APTableController with the table view
+### A simple cell
 
 ``` objective-c
-[tableController reloadWithData:@[@"this is a cell", @"and this is also a cell"]];
+[self.tableController reloadWithData:@"A simple cell"];
 ```
+![One cell](http://i.imgur.com/SdXQe2Z.png)
 
-...  that's it
-
-<include screenshot>
-
-<example with action>
-
-<example with customization>
-
-<example with custom class>
-
-### Just code
-
+### Many cells
 ``` objective-c
-[tableController reloadTableView:self.tableView withData:@[@"this is a cell", @"and this is also a cell"]];
+[self.tableController reloadWithData:@[@"cell #1", @"cell #2", @"cell #3"]];
 ```
+![Many cells](http://i.imgur.com/jXPYCUi.png)
+
+### Custom loading
+``` objective-c
+[self.tableController reloadWithData:@[
+    @{
+        kObject : @"cell #1",
+        kOnLoad : ^(APTableCell *cell) {
+            cell.textLabel.textColor = [UIColor redColor];
+        }
+    },
+    @"cell #2",
+    @"cell #3"
+]];
+```
+![Many cells with color](http://i.imgur.com/fHJc1RQ.png)
+
+### Handling didSelect
+``` objective-c
+[self.tableController reloadWithData:@[
+    @{
+        kObject : @"cell #1",
+        kOnSelect : ^{
+            [[[UIAlertView alloc] initWithTitle:@"Hello World!"
+                                       message:nil
+                                      delegate:nil
+                             cancelButtonTitle:@"OK"
+                              otherButtonTitles:nil] show];
+        }
+    },
+    @"cell #2",
+    @"cell #3"
+]];
+```
+![Many cells with action](http://i.imgur.com/bZXSe3h.png)
+
+### Many sections
+``` objective-c
+[self.tableController reloadWithData:@[
+    @[@"cell #1.1", @"cell #1.2", @"cell #1.3"],
+    @[@"cell #2.1", @"cell #2.2", @"cell #2.3"],
+    @[@"cell #3.1", @"cell #3.2", @"cell #3.3"],
+]];
+```
+![Many sections](http://i.imgur.com/w1UTGYN.png)
+
+## How to use
+
+1. add a custom object and switch the class to APTableController:
+    * ![add custom object](http://i.imgur.com/XWj9agy.png)
+    * ![rename class](http://i.imgur.com/HPSXJJ1.png)
+2. connect the tableView IBOutlet from APTableController with the table view:
+    * ![connect tableView](http://i.imgur.com/oI1wkfD.png)
+3. connect the viewController IBOutlet from APTableController with the table view (this is optional, the only thing that happens is that the table controller does not know in which view controller is presented:
+    * ![connect viewController](http://i.imgur.com/SPBKzdP.png)
+4. get a referecing ooutlet for the tableController so you can use it:
+    * ![keep outlet](http://i.imgur.com/qjOb5Mq.png)
+
+
 
 ## Data normalization
 
