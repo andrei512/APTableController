@@ -17,7 +17,25 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.tableController reloadWithData:@[@"a cell", @"another cell", @"last cell"]];    
+    PO([self.tableController sectionsFromData:@"ana"])
+    NSArray *simpleList = @[@"ana", @"are", @"mere"];
+    PO([self.tableController sectionsFromData:simpleList])
+    NSArray *nestedArray = @[
+        @{
+            kObject : @"hash cell",
+            kOnLoad : ^(APTableCell *cell) {
+                NSLog(@"yey");
+            }
+        },
+        @[
+            @"ana",
+            @"are",
+            @"mere"
+        ]
+    ];
+    PO([self.tableController sectionsFromData:nestedArray])
+    
+    [self.tableController reloadWithData:nestedArray];
 }
 
 @end

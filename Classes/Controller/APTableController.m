@@ -17,13 +17,12 @@
 
 - (void)reloadTableView:(UITableView *)tableView withData:(id)data {
     self.tableView = tableView;
+    self.sections = [self sectionsFromData:data];
     
     [self realoadTableView];
 }
 
 - (void)realoadTableView {
-    [self normalizeData];
-    
     // To do: optimize stash with APUtils
     NSMutableDictionary *nibStash = [NSMutableDictionary dictionary];
     
@@ -52,6 +51,8 @@
         }
     }
 
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
     
     [self.tableView reloadData];
 }
@@ -68,37 +69,10 @@
 #pragma mark - Magic
 
 - (NSArray *)sectionsFromData:(NSObject *)data {
-    if ([data respondsToSelector:@selector(asTableSections)]) {
-        return [data asTableSections];
+    if ([data respondsToSelector:@selector(asTableSectionViewModels)]) {
+        return [data asTableSectionViewModels];
     }
     return nil;
-}
-
-- (void)normalizeData {
-    // TO DO: figure out how to run this code just once or smth..
-    self.sections = [self.sections map:^id(id section) {
-        if ([section isKindOfClass:[APTableSectionViewModel class]] == YES) {
-            // is real section model
-            APTableSectionViewModel *normalSection = section;
-            [normalSection normalizeData];
-            return normalSection;
-        } else if ([section isKindOfClass:[NSArray class]] == YES){
-            // is in fact a array of unnormalized data
-            APTableSectionViewModel *arraySection = [APTableSectionViewModel sectionWithCells:(NSArray *)section];
-            [arraySection normalizeData];
-            return arraySection;
-        } else if ([section isKindOfClass:[NSDictionary class]] == YES) {
-            APTableSectionViewModel *hashCellSection = [APTableSectionViewModel sectionWithCells:@[section]];
-            [hashCellSection normalizeData];
-            return hashCellSection;
-        } else {
-            // ignore the fact that you don't have a section model or an array of cellModels
-            // and just make a Section with one cell containing the object
-            APTableSectionViewModel *wierdSection = [APTableSectionViewModel sectionWithCells:@[section]];
-            [wierdSection normalizeData];
-            return wierdSection;
-        }
-    }];
 }
 
 

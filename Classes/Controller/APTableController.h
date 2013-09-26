@@ -10,6 +10,9 @@
 #import "APTableCellViewModel.h"
 #import "APTableCell.h"
 
+#import "NSArray+APTableController.h"
+#import "NSDictionary+APTableController.h"
+#import "NSObject+APTableController.h"
 
 @interface APTableController : NSObject <UITableViewDelegate, UITableViewDataSource>
 
@@ -31,8 +34,3 @@
 
 @end
 
-@interface NSArray (APTableController)
-
-- (NSArray *)asTableSections;
-
-@end

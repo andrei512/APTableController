@@ -12,3 +12,6 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
 #endif
+
+#define PO(X) NSLog(@"%s = %@", #X, X);
+#define LOG_LINE NSLog(@"%d: %s", __LINE__, __PRETTY_FUNCTION__);

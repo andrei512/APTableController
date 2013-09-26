@@ -8,6 +8,7 @@
 
 #import "APTableSectionViewModel.h"
 #import <NSArray+APUtils.h>
+#import <NSObject+APUtils.h>
 
 @implementation APTableSectionViewModel
 
@@ -49,5 +50,11 @@
         }
     }];
 }
+
+- (NSString *)description {
+    NSString *cellDescription = [NSString stringWithFormat:@"%@", self.cells];
+    return [NSString stringWithFormat:@"%@ - |%@|", self.className, cellDescription];
+}
+
 
 @end

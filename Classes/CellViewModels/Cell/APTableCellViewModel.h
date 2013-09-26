@@ -11,11 +11,12 @@
 typedef void(^APTableViewCellActionBlock)(APTableCell *);
 typedef void(^APTableViewActionBlock)(void);
 
-#define kOnLoad @"onLoad"
-#define kOnSelect @"onSelect"
-#define kObject @"object"
-#define kCellIdentifier @"cellIdentifier"
-#define kNibName @"nibName"
+// keys
+extern NSString * const kOnLoad;
+extern NSString * const kOnSelect;
+extern NSString * const kObject;
+extern NSString * const kCellIdentifier;
+extern NSString * const kNibName;
 
 @interface APTableCellViewModel : NSObject
 
@@ -31,7 +32,10 @@ typedef void(^APTableViewActionBlock)(void);
 @property (nonatomic, copy) APTableViewCellActionBlock onLoad;
 @property (nonatomic, copy) APTableViewActionBlock onSelect;
 
+
 + (instancetype)cellModel;
++ (instancetype)cellModelWithObject:(id)object;
++ (instancetype)cellModelWithHash:(NSDictionary *)hash;
 
 - (void)loadHash:(NSDictionary *)hash;
 
