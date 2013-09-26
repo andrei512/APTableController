@@ -62,7 +62,7 @@ In your Xib/Storyboard connect the tableView IBOutlet from APTableController wit
     @[@"cell #3.1", @"cell #3.2", @"cell #3.3"],
 ]];
 ```
-![Many sections](http://i.imgur.com/FPXaEJJ.png)
+![Many sections](http://i.imgur.com/w1UTGYN.png)
 
 ## Data normalization
 
