@@ -13,6 +13,7 @@
 
 @implementation APTableCellViewModel
 
+
 - (id)init {
     if (self = [super init]) {
         self.cellIdentifier = [[self className] stringByRemovingSuffix:@"ViewModel"];

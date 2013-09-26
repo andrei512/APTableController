@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "APTableController.h"
 
 @interface ViewController : UIViewController
+
+@property (nonatomic, strong) IBOutlet APTableController *tableController;
 
 @end

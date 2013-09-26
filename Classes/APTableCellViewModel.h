@@ -35,4 +35,5 @@ typedef void(^APTableViewActionBlock)(void);
 
 - (void)loadHash:(NSDictionary *)hash;
 
+
 @end

@@ -12,5 +12,6 @@
 
 @interface APTableCell : UITableViewCell
 
+- (void)loadViewModel:(APTableCellViewModel *)cellViewModel;
 
 @end

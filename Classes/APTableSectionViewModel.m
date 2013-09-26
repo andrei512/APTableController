@@ -7,6 +7,7 @@
 //
 
 #import "APTableSectionViewModel.h"
+#import <NSArray+APUtils.h>
 
 @implementation APTableSectionViewModel
 

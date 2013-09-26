@@ -7,11 +7,12 @@
 //
 
 #import "APTableController.h"
+#import <NSArray+APUtils.h>
 
 @implementation APTableController
 
 - (void)reloadWithData:(id)data {
-    [self reloadTableView:self.tableView WithData:data];
+    [self reloadTableView:self.tableView withData:data];
 }
 
 - (void)reloadTableView:(UITableView *)tableView withData:(id)data {
@@ -23,7 +24,8 @@
 - (void)realoadTableView {
     [self normalizeData];
     
-    NSMutableDictionary *nibStash = [self instanceStashWithKey:@"nibStash"];
+    // To do: optimize stash with APUtils
+    NSMutableDictionary *nibStash = [NSMutableDictionary dictionary];
     
     NSMutableSet *registeredIdentifiers = [NSMutableSet set];
     
@@ -64,6 +66,13 @@
 }
 
 #pragma mark - Magic
+
+- (NSArray *)sectionsFromData:(NSObject *)data {
+    if ([data respondsToSelector:@selector(asTableSections)]) {
+        return [data asTableSections];
+    }
+    return nil;
+}
 
 - (void)normalizeData {
     // TO DO: figure out how to run this code just once or smth..
@@ -129,3 +138,5 @@
 }
 
 @end
+
+
