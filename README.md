@@ -3,27 +3,13 @@ APTableController
 
 ! Work in progress
 
-## How to
-
-### With Xibs/Storyboards
+## How to use
 
 In your Xib/Storyboard connect the tableView IBOutlet from APTableController with the table view
 
 ``` objective-c
 [tableController reloadWithData:@[@"this is a cell", @"and this is also a cell"]];
 ```
-
-...  that's it
-
-<include screenshot>
-
-<example with action>
-
-<example with customization>
-
-<example with custom class>
-
-### Just code
 
 ``` objective-c
 [self.tableController reloadWithData:@"A simple cell"];
