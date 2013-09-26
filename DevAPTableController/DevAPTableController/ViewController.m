@@ -16,44 +16,77 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    PO([self.tableController sectionsFromData:@"ana"])
-    NSArray *simpleList = @[@"ana", @"are", @"mere"];
-    PO([self.tableController sectionsFromData:simpleList])
-    NSArray *nestedArray = @[
+
+    [self manySections];
+}
+
+- (void)oneCell {
+    [self.tableController reloadWithData:@"A simple cell"];
+}
+
+- (void)manyCells {
+    [self.tableController reloadWithData:@[@"cell #1", @"cell #2", @"cell #3"]];
+}
+
+- (void)manyCellsWithColors {
+    [self.tableController reloadWithData:@[
         @{
-            kObject : @"hash cell",
+            kObject : @"cell #1",
             kOnLoad : ^(APTableCell *cell) {
-                cell.frame = CGRectMake(0, 0, 320, 80);
+                cell.textLabel.textColor = [UIColor redColor];
             }
         },
-        @[
-            @"ana",
-            @"are",
-            @"mere"
-        ]
-    ];
-    PO([self.tableController sectionsFromData:nestedArray])
-    
+        @"cell #2",
+        @"cell #3"
+    ]];
+}
+
+- (void)manyCellsWithActions {
+    [self.tableController reloadWithData:@[
+        @{
+            kObject : @"cell #1",
+            kOnSelect : ^{
+                [[[UIAlertView alloc] initWithTitle:@"Hello World!"
+                                           message:nil
+                                          delegate:nil
+                                 cancelButtonTitle:@"OK"
+                                  otherButtonTitles:nil] show];
+            }
+        },
+        @"cell #2",
+        @"cell #3"
+    ]];
+}
+
+- (void)manySections {
+    [self.tableController reloadWithData:@[
+        @[@"cell #1.1", @"cell #1.2", @"cell #1.3"],
+        @[@"cell #2.1", @"cell #2.2", @"cell #2.3"],
+        @[@"cell #3.1", @"cell #3.2", @"cell #3.3"],
+    ]];
+}
+
+- (void)longArray {
     NSMutableArray *longArray = [NSMutableArray array];
     
     for (int i = 0; i < 100; ++i) {
         NSString *cellTitle = [NSString stringWithFormat:@"cell #%d", i];
         if (i % 2 == 0) {
             [longArray addObject:@{
-                kObject : cellTitle
-            }];
+                                   kObject : cellTitle
+                                   }];
         } else {
             [longArray addObject:@{
-                kObject : cellTitle,
-                kOnLoad : ^(APTableCell *cell) {
-                    cell.backgroundColor = [UIColor redColor];
-                }
-             }];
+                                   kObject : cellTitle,
+                                   kOnLoad : ^(APTableCell *cell) {
+                cell.backgroundColor = [UIColor redColor];
+            }
+                                   }];
         }
     }
     
-    [self.tableController reloadWithData:nestedArray];
+    [self.tableController reloadWithData:longArray];
 }
+
 
 @end
