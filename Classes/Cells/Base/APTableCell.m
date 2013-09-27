@@ -9,9 +9,12 @@
 #import "APTableCell.h"
 #import "APTableCellViewModel.h"
 
+#import "UIView+APTableController.h"
+#import "NSObject+APKeys.h"
+
 @interface APTableCell ()
 
-@property (nonatomic, strong) NSMutableArray *defaults;
+@property (nonatomic, strong) NSMutableDictionary *context;
 
 @end
 
@@ -19,14 +22,27 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    
+    self.context = [NSMutableDictionary dictionary];
+    
+    [self iterateSubviews:^BOOL(UIView *view) {
+        if (view.apKey != nil) {
+            self.context[view.apKey] = view;
+        }
+        if ([view isKindOfClass:[UILabel class]]) {
+            UILabel *label = (UILabel *)view;
+            if (label.text != nil) {
+                self.context[label.text] = label;
+            }
+        }
+        return YES;
+    }];
 }
 
 - (void)loadViewModel:(APTableCellViewModel *)viewModel {
     self.viewModel = viewModel;
-    
-    if (viewModel.object != nil) {
-        self.textLabel.text = [viewModel.object description];
-    }
+
+    [viewModel bindWithContext:self.context];
     
     // block based customization
     if (viewModel.onLoad != nil) {

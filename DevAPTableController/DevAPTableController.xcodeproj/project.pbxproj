@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7529B2C217F5B68900997D90 /* NSObject+APKeys.m in Sources */ = {isa = PBXBuildFile; fileRef = 7529B2C117F5B68900997D90 /* NSObject+APKeys.m */; };
+		7529B2C417F5BDBB00997D90 /* UserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7529B2C317F5BDBB00997D90 /* UserCell.xib */; };
+		7529B2C717F5BF2400997D90 /* UIView+APTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7529B2C617F5BF2400997D90 /* UIView+APTableController.m */; };
+		7529B2D117F5CD0900997D90 /* APViewBinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 7529B2D017F5CD0900997D90 /* APViewBinder.m */; };
+		7529B2D417F5CD1C00997D90 /* APLabelBinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 7529B2D317F5CD1C00997D90 /* APLabelBinder.m */; };
 		7559B3B217F348F900E408FD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7559B3B117F348F900E408FD /* UIKit.framework */; };
 		7559B3B417F348F900E408FD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7559B3B317F348F900E408FD /* Foundation.framework */; };
 		7559B3B617F348F900E408FD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7559B3B517F348F900E408FD /* CoreGraphics.framework */; };
@@ -33,6 +38,15 @@
 /* Begin PBXFileReference section */
 		2E0CC9B409A0444EB9C3AA2A /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		718AFD1630D2496AB348D17F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		7529B2C017F5B68900997D90 /* NSObject+APKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+APKeys.h"; path = "Categories/NSObject+APKeys.h"; sourceTree = "<group>"; };
+		7529B2C117F5B68900997D90 /* NSObject+APKeys.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+APKeys.m"; path = "Categories/NSObject+APKeys.m"; sourceTree = "<group>"; };
+		7529B2C317F5BDBB00997D90 /* UserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserCell.xib; sourceTree = "<group>"; };
+		7529B2C517F5BF2400997D90 /* UIView+APTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+APTableController.h"; path = "Categories/UIView+APTableController.h"; sourceTree = "<group>"; };
+		7529B2C617F5BF2400997D90 /* UIView+APTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+APTableController.m"; path = "Categories/UIView+APTableController.m"; sourceTree = "<group>"; };
+		7529B2CF17F5CD0900997D90 /* APViewBinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APViewBinder.h; sourceTree = "<group>"; };
+		7529B2D017F5CD0900997D90 /* APViewBinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APViewBinder.m; sourceTree = "<group>"; };
+		7529B2D217F5CD1C00997D90 /* APLabelBinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APLabelBinder.h; sourceTree = "<group>"; };
+		7529B2D317F5CD1C00997D90 /* APLabelBinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APLabelBinder.m; sourceTree = "<group>"; };
 		7559B3AE17F348F900E408FD /* DevAPTableController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DevAPTableController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7559B3B117F348F900E408FD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		7559B3B317F348F900E408FD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -82,6 +96,76 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7529B2BF17F5B64300997D90 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				7529B2C017F5B68900997D90 /* NSObject+APKeys.h */,
+				7529B2C117F5B68900997D90 /* NSObject+APKeys.m */,
+				7529B2C517F5BF2400997D90 /* UIView+APTableController.h */,
+				7529B2C617F5BF2400997D90 /* UIView+APTableController.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		7529B2C817F5CCF700997D90 /* ViewBinder */ = {
+			isa = PBXGroup;
+			children = (
+				7529B2C917F5CCF700997D90 /* Base */,
+				7529B2CA17F5CCF700997D90 /* Block */,
+				7529B2CB17F5CCF700997D90 /* ImageView */,
+				7529B2CC17F5CCF700997D90 /* Label */,
+				7529B2CD17F5CCF700997D90 /* Switch */,
+				7529B2CE17F5CCF700997D90 /* TextField */,
+			);
+			path = ViewBinder;
+			sourceTree = "<group>";
+		};
+		7529B2C917F5CCF700997D90 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				7529B2CF17F5CD0900997D90 /* APViewBinder.h */,
+				7529B2D017F5CD0900997D90 /* APViewBinder.m */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		7529B2CA17F5CCF700997D90 /* Block */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Block;
+			sourceTree = "<group>";
+		};
+		7529B2CB17F5CCF700997D90 /* ImageView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ImageView;
+			sourceTree = "<group>";
+		};
+		7529B2CC17F5CCF700997D90 /* Label */ = {
+			isa = PBXGroup;
+			children = (
+				7529B2D217F5CD1C00997D90 /* APLabelBinder.h */,
+				7529B2D317F5CD1C00997D90 /* APLabelBinder.m */,
+			);
+			path = Label;
+			sourceTree = "<group>";
+		};
+		7529B2CD17F5CCF700997D90 /* Switch */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Switch;
+			sourceTree = "<group>";
+		};
+		7529B2CE17F5CCF700997D90 /* TextField */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TextField;
+			sourceTree = "<group>";
+		};
 		7559B3A517F348F900E408FD = {
 			isa = PBXGroup;
 			children = (
@@ -119,6 +203,7 @@
 				7559B3C117F348F900E408FD /* AppDelegate.m */,
 				7559B3C917F348FA00E408FD /* ViewController.h */,
 				7559B3CA17F348FA00E408FD /* ViewController.m */,
+				7529B2C317F5BDBB00997D90 /* UserCell.xib */,
 				7559B3CC17F348FA00E408FD /* ViewController.xib */,
 				7559B3B817F348F900E408FD /* Supporting Files */,
 			);
@@ -142,6 +227,7 @@
 		7559B3E517F450AC00E408FD /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				7529B2BF17F5B64300997D90 /* Categories */,
 				7559B3E617F450AC00E408FD /* Cells */,
 				7559B3EB17F450AC00E408FD /* CellViewModels */,
 				7559B3F217F450AC00E408FD /* Controller */,
@@ -171,6 +257,7 @@
 		7559B3EB17F450AC00E408FD /* CellViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				7529B2C817F5CCF700997D90 /* ViewBinder */,
 				7559B3EC17F450AC00E408FD /* Cell */,
 				7559B3EF17F450AC00E408FD /* Section */,
 			);
@@ -276,6 +363,7 @@
 				7559B3C417F348FA00E408FD /* Default.png in Resources */,
 				7559B3C617F348FA00E408FD /* Default@2x.png in Resources */,
 				7559B3C817F348FA00E408FD /* Default-568h@2x.png in Resources */,
+				7529B2C417F5BDBB00997D90 /* UserCell.xib in Resources */,
 				7559B3CE17F348FA00E408FD /* ViewController.xib in Resources */,
 				7559B3F817F450AC00E408FD /* APTableCell.xib in Resources */,
 				7559B3FC17F450AC00E408FD /* APTableController.xib in Resources */,
@@ -328,10 +416,14 @@
 				7559B3F717F450AC00E408FD /* APTableCell.m in Sources */,
 				7559B3F917F450AC00E408FD /* APTableCellViewModel.m in Sources */,
 				7559B3FA17F450AC00E408FD /* APTableSectionViewModel.m in Sources */,
+				7529B2C717F5BF2400997D90 /* UIView+APTableController.m in Sources */,
+				7529B2C217F5B68900997D90 /* NSObject+APKeys.m in Sources */,
 				7559B3FB17F450AC00E408FD /* APTableController.m in Sources */,
 				7559B3FF17F450CF00E408FD /* NSArray+APTableController.m in Sources */,
 				7559B40517F4520000E408FD /* NSDictionary+APTableController.m in Sources */,
+				7529B2D417F5CD1C00997D90 /* APLabelBinder.m in Sources */,
 				7559B40817F4520E00E408FD /* NSObject+APTableController.m in Sources */,
+				7529B2D117F5CD0900997D90 /* APViewBinder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

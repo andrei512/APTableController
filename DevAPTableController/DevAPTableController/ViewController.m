@@ -17,7 +17,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    [self manySections];
+    [self manyCellsWithColors];
+}
+
+- (void)customNib {
+    [self.tableController reloadWithData:@{
+        kObject  : @{
+                @"name" : @"Andrei Puni",
+                @"age" : @22,
+                @"avatar" : @"https://0.gravatar.com/avatar/e9ef1bf7868e60724b8f9411eb781c73?d=https%3A%2F%2Fidenticons.github.com%2F9e7253bec9857715d9e81b22dbf2084e.png&s=420",
+                @"bio" : @"hacker, entrepreneur"
+        },
+        kNibName : @"UserCell"
+    }];
 }
 
 - (void)oneCell {
@@ -34,6 +46,7 @@
             kObject : @"cell #1",
             kOnLoad : ^(APTableCell *cell) {
                 cell.textLabel.textColor = [UIColor redColor];
+                cell.accessoryType = UITableViewCellAccessoryCheckmark;
             }
         },
         @"cell #2",

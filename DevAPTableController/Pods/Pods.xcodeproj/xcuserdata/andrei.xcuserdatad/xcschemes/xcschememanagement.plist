@@ -19,6 +19,16 @@
 			<key>orderHint</key>
 			<integer>4</integer>
 		</dict>
+		<key>Pods-SDWebImage.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
+		<key>Pods-libwebp.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>6</integer>
+		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -42,12 +52,42 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>15294C66EBF244DD9CECE951</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1C9812408F014EC3AE68996C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>2850F39EB6344515AD4F8E30</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>57C142AA727D4E01BB94E8A3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>5C8B631B388A46419A84041D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>647D97AE75164F6ABA8AF51A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8320FAB9D3C14B88806FE8D8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B0BACB017CAF4509A71A6952</key>
 		<dict>
 			<key>primary</key>
 			<true/>

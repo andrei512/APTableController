@@ -10,6 +10,7 @@
 
 #import <NSObject+APUtils.h>
 #import <NSString+APUtils.h>
+#import "APViewBinder.h"
 
 NSString * const kOnLoad = @"onLoad";
 NSString * const kOnSelect = @"onSelect";
@@ -57,10 +58,23 @@ NSString * const kNibName = @"nibName";
     if (hash[kCellIdentifier]) {
         self.cellIdentifier = hash[kCellIdentifier];
     }
+    if (hash[kNibName]) {
+        self.nibName = hash[kNibName];
+    }
 }
 
 - (NSString *)description {
     return [NSString stringWithFormat:@"%@ - %@", self.className, self.object];
+}
+
+- (void)bindWithContext:(NSDictionary *)context {
+    for (NSString *key in context) {
+        UIView *view = context[key];
+        for (APViewBinder *binder in [APViewBinder binders]) {
+            [binder bind:self.object onKey:key with:view];
+        }
+    }
+
 }
 
 @end

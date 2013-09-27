@@ -40,5 +40,6 @@ extern NSString * const kNibName;
 
 - (void)loadHash:(NSDictionary *)hash;
 
+- (void)bindWithContext:(NSDictionary *)context;
 
 @end
