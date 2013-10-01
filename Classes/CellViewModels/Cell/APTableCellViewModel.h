@@ -27,6 +27,8 @@ extern NSString * const kNibName;
 @property (nonatomic, strong) NSString *nibName;
 @property (nonatomic, strong) NSObject *object;
 
+@property (nonatomic, strong) NSIndexPath *indexPath;
+
 // blocks and magic
 
 @property (nonatomic, copy) APTableViewCellActionBlock onLoad;

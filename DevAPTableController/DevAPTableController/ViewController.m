@@ -23,7 +23,7 @@ void after(NSTimeInterval timeInterval, void(^block)(void)) {
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    [self deleteCells];
+    [self insertSections];
 }
 
 
@@ -136,18 +136,20 @@ void after(NSTimeInterval timeInterval, void(^block)(void)) {
     });
 }
 
-- (void)addSection {
+- (void)insertSection {
     [self manyCells];
     
     [self.tableController insertSection:@"ana are mere".asTableSectionViewModel];
 }
 
-- (void)addSections {
+- (void)insertSections {
     [self manyCells];
     
-    [self.tableController insertSections:
-        @[@"ana are mere".asTableSectionViewModel,
-          @"ana are chef de joaca".asTableSectionViewModel]];
+    after(2, ^{
+        [self.tableController insertSections:
+         @[@"I love table views".asTableSectionViewModel,
+           @"Blocks!!".asTableSectionViewModel]];
+    });
 }
 
 - (void)editCell {
@@ -180,7 +182,11 @@ void after(NSTimeInterval timeInterval, void(^block)(void)) {
 }
 
 - (void)removeSection {
+    [self manySections];
     
+    after(2, ^{
+        [self.tableController deleteSectionAtIndex:0];
+    });
 }
 
 - (void)removeSections {

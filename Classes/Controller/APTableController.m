@@ -51,6 +51,7 @@
         section.viewController = self.viewController;
         section.tableView = self.tableView;
         
+        int cellIndex = 0;
         for (APTableCellViewModel *cell in section.cells) {
             // create nib if it does not exist
             if (self.nibStash[cell.nibName] == nil) {
@@ -66,6 +67,7 @@
             // set view controller and table view references on table view
             cell.viewController = self.viewController;
             cell.tableView = self.tableView;
+            cell.indexPath = [NSIndexPath indexPathForRow:cellIndex++ inSection:sectionIndex];
         }
     }
 
@@ -170,6 +172,48 @@
     LOG_LINE    
 }
 
+//Sections
+
+- (void)insertSection:(APTableSectionViewModel *)section {
+    [self insertSections:@[section]];
+}
+
+- (void)insertSections:(NSArray *)sections {
+    int begin = self.sections.count;
+    int count = sections.count;
+    
+    [self.sections addObjectsFromArray:sections];
+    
+    NSRange range = NSMakeRange(begin, count);
+    [self.tableView insertSections:[NSIndexSet indexSetWithIndexesInRange:range]
+                  withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
+- (void)insertSection:(APTableSectionViewModel *)section atIndex:(int)index {
+    
+}
+
+- (void)insertSections:(NSArray *)sections atIndex:(int)index {
+    
+}
+
+- (void)deleteSectionAtIndex:(int)index {
+    [self.sections removeObjectAtIndex:index];
+    [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:index]
+                  withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
+- (void)deleteSectionAtIndexes:(NSArray *)indexes {
+    
+}
+
+- (void)deleteSection:(APTableSectionViewModel *)section {
+    [self deleteSections:@[section]];
+}
+
+- (void)deleteSections:(NSArray *)sections {
+    
+}
 
 #pragma mark - UITableViewDataSource
 

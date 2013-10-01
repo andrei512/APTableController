@@ -57,6 +57,11 @@
 - (void)insertSection:(APTableSectionViewModel *)section atIndex:(int)index;
 - (void)insertSections:(NSArray *)sections atIndex:(int)index;
 
+- (void)deleteSectionAtIndex:(int)index;
+- (void)deleteSectionAtIndexes:(NSArray *)indexes;
+
+- (void)deleteSection:(APTableSectionViewModel *)section;
+- (void)deleteSections:(NSArray *)sections;
 
 @end
 

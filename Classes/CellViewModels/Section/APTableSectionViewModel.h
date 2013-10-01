@@ -34,7 +34,8 @@
 
 - (void)deleteCellAtIndex:(int)index;
 - (void)deleteCellsAtIndexPaths:(NSArray *)indexes;
-
+- (void)deleteCell:(APTableCellViewModel *)cell;
+- (void)deleteCells:(NSArray *)cells;
 
 
 
