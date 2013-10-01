@@ -42,7 +42,8 @@
 - (void)loadViewModel:(APTableCellViewModel *)viewModel {
     self.viewModel = viewModel;
 
-    [viewModel bindWithContext:self.context];
+    //[viewModel bindWithContext:self.context];
+    self.textLabel.text = viewModel.object.description;
     
     // block based customization
     if (viewModel.onLoad != nil) {

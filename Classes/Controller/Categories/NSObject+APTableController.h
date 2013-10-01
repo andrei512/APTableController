@@ -11,7 +11,7 @@
 
 @interface NSObject (APTableController)
 
-- (NSArray *)asTableSectionViewModels;
+- (NSMutableArray *)asTableSectionViewModels;
 - (APTableSectionViewModel *)asTableSectionViewModel;
 - (APTableCellViewModel *)asCellViewModel;
 

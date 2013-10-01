@@ -14,11 +14,14 @@
 #import "NSDictionary+APTableController.h"
 #import "NSObject+APTableController.h"
 
+
 @interface APTableController : NSObject <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, weak) IBOutlet UIViewController *viewController;
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
-@property (nonatomic, strong) NSArray *sections;
+@property (nonatomic, strong) NSMutableArray *sections;
+
+@property (nonatomic, readonly) APTableSectionViewModel *firstSection;
 
 - (void)reloadWithData:(id)data;
 - (void)reloadTableView:(UITableView *)tableView withData:(NSObject *)data;
@@ -30,8 +33,30 @@
 
 - (APTableCellViewModel *)cellViewModelAtIndexPath:(NSIndexPath *)indexPath;
 
+- (NSMutableArray *)sectionsFromData:(NSObject *)data;
 
-- (NSArray *)sectionsFromData:(NSObject *)data;
+// Inserting, Deleting, and Moving Rows and Sections
+
+- (void)insertCell:(APTableCellViewModel *)cellViewModel;// in the first section at the end
+- (void)insertCell:(APTableCellViewModel *)cellViewModel atIndex:(int)index;//in the first section
+- (void)deleteCellAtIndex:(int)index; // in the first section
+
+- (void)insertCell:(APTableCellViewModel *)cellViewModel atIndexPath:(NSIndexPath *)indexPath;
+- (void)deleteCellAtIndexPath:(NSIndexPath *)indexPath;
+
+- (void)insertCells:(NSArray *)cells atIndexPaths:(NSArray *)indexPaths;// the cells have to be in the same section
+- (void)deleteCellsAtIndexPaths:(NSArray *)indexPaths;
+
+- (void)moveCellAtIndex:(int)index toIndex:(int)toIndex; // first section
+- (void)moveCellAtIndexPath:(NSIndexPath *)indexPath toIndexPath:(NSIndexPath *)toIndexPath;
+
+// Sections
+- (void)insertSection:(APTableSectionViewModel *)section;
+- (void)insertSections:(NSArray *)sections;
+
+- (void)insertSection:(APTableSectionViewModel *)section atIndex:(int)index;
+- (void)insertSections:(NSArray *)sections atIndex:(int)index;
+
 
 @end
 

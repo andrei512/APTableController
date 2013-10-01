@@ -10,8 +10,8 @@
 
 @implementation NSObject (APTableController)
 
-- (NSArray *)asTableSectionViewModels {
-    return @[[self asTableSectionViewModel]];
+- (NSMutableArray *)asTableSectionViewModels {
+    return @[[self asTableSectionViewModel]].mutableCopy;
 }
 
 - (APTableSectionViewModel *)asTableSectionViewModel {

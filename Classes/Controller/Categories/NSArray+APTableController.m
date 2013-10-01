@@ -11,7 +11,7 @@
 
 @implementation NSArray (APTableController)
 
-- (NSArray *)asTableSectionViewModels {
+- (NSMutableArray *)asTableSectionViewModels {
     BOOL foundArray = NO;
     for (NSObject *object in self) {
         if ([object isKindOfClass:[NSArray class]] == YES) {
@@ -23,7 +23,7 @@
     if (foundArray == YES) {
         return [self mapWithSelector:@selector(asTableSectionViewModel)];
     } else {
-        return @[[self asTableSectionViewModel]];
+        return @[[self asTableSectionViewModel]].mutableCopy;
     }
 }
 

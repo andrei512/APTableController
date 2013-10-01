@@ -25,7 +25,7 @@ extern NSString * const kNibName;
 
 @property (nonatomic, strong) NSString *cellIdentifier;
 @property (nonatomic, strong) NSString *nibName;
-@property (nonatomic, strong) id object;
+@property (nonatomic, strong) NSObject *object;
 
 // blocks and magic
 

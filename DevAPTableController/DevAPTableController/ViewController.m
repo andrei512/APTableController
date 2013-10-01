@@ -8,6 +8,12 @@
 
 #import "ViewController.h"
 
+void after(NSTimeInterval timeInterval, void(^block)(void)) {
+    double delayInSeconds = timeInterval;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), block);
+}
+
 @interface ViewController ()
 
 @end
@@ -17,7 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    [self manyCellsWithColors];
+    [self deleteCells];
 }
 
 
@@ -102,6 +108,113 @@
     
     [self.tableController reloadWithData:longArray];
 }
+
+
+- (void)addCell {
+    [self manySections];
+    
+    after(2, ^{
+        [self.tableController insertCell:@"added a cell".asCellViewModel];
+        after(2, ^{
+            [self.tableController insertCell:@"and another one".asCellViewModel];
+            after(2, ^{
+                [self.tableController insertCell:@{
+                                                   kObject : @"and a red one :)",
+                                                   kOnLoad : ^(APTableCell *cell) {
+                    cell.textLabel.textColor = [UIColor redColor];
+                }
+                }.asCellViewModel];
+            });
+        });
+    });
+}
+
+- (void)addCells {
+    [self manySections];
+    
+    after(2, ^{
+    });
+}
+
+- (void)addSection {
+    [self manyCells];
+    
+    [self.tableController insertSection:@"ana are mere".asTableSectionViewModel];
+}
+
+- (void)addSections {
+    [self manyCells];
+    
+    [self.tableController insertSections:
+        @[@"ana are mere".asTableSectionViewModel,
+          @"ana are chef de joaca".asTableSectionViewModel]];
+}
+
+- (void)editCell {
+    
+}
+
+- (void)deleteCell {
+    [self manyCells];
+    
+    after(2, ^{
+        [self.tableController deleteCellAtIndex:0];
+        after(2, ^{
+            [self.tableController insertCell:@"first cell".asCellViewModel atIndex:0];
+            after(2, ^{
+                [self.tableController deleteCellAtIndex:0];
+            });
+        });
+    });
+}
+
+- (void)deleteCells {
+    [self manySections];
+    
+    after(2, ^{
+        [self.tableController deleteCellsAtIndexPaths:@[
+            [NSIndexPath indexPathForRow:1 inSection:1],
+            [NSIndexPath indexPathForRow:2 inSection:1]
+        ]];
+    });
+}
+
+- (void)removeSection {
+    
+}
+
+- (void)removeSections {
+    
+}
+
+- (void)pullToReferesh {
+    
+}
+
+- (void)infiniteScroll {
+    
+}
+
+- (void)sectionCallbacks {
+    
+}
+
+- (void)globalCallbacks {
+    
+}
+
+- (void)sectionLoading {
+    
+}
+
+- (void)globalLoading {
+    
+}
+
+- (void)handleOneSectionTables {
+    
+}
+
 
 
 @end

@@ -24,7 +24,7 @@
     if (self = [super init]) {
         self.nibStash = [NSMutableDictionary dictionary];
         self.cellStash = [NSMutableDictionary dictionary];
-        self.sections = @[];
+        self.sections = [NSMutableArray array];
     }
     return self;
 }
@@ -44,9 +44,12 @@
 
 - (void)realoadTableView {
     NSMutableSet *registeredIdentifiers = [NSMutableSet set];
-    
+    int sectionIndex = 0;
     for (APTableSectionViewModel *section in self.sections) {
+        section.sectionIndex = sectionIndex++;
         section.tableController = self;
+        section.viewController = self.viewController;
+        section.tableView = self.tableView;
         
         for (APTableCellViewModel *cell in section.cells) {
             // create nib if it does not exist
@@ -61,12 +64,8 @@
             }
             
             // set view controller and table view references on table view
-            if (cell.viewController == nil) {
-                cell.viewController = self.viewController;
-            }
-            if (cell.tableView == nil) {
-                cell.tableView = self.tableView;
-            }
+            cell.viewController = self.viewController;
+            cell.tableView = self.tableView;
         }
     }
 
@@ -78,6 +77,13 @@
 
 - (int)numberOfSections {
     return self.sections.count;
+}
+
+- (APTableSectionViewModel *)firstSection {
+    if (self.sections.count > 0) {
+        return self.sections[0];
+    }
+    return nil;
 }
 
 - (int)numberOfRowsInSection:(int)sectionIndex {
@@ -92,11 +98,76 @@
 
 #pragma mark - Magic
 
-- (NSArray *)sectionsFromData:(NSObject *)data {
+- (NSMutableArray *)sectionsFromData:(NSObject *)data {
     if ([data respondsToSelector:@selector(asTableSectionViewModels)]) {
         return [data asTableSectionViewModels];
     }
     return nil;
+}
+
+#pragma mark - Inserting, Deleting, and Moving Rows and Sections
+
+- (void)insertCell:(APTableCellViewModel *)cellViewModel {
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.firstSection.numberOfCells inSection:0];
+    [self insertCell:cellViewModel atIndexPath:indexPath];
+}
+
+- (void)insertCell:(APTableCellViewModel *)cellViewModel atIndex:(int)index {
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+    [self insertCell:cellViewModel atIndexPath:indexPath];
+}
+
+- (void)insertCell:(APTableCellViewModel *)cellViewModel atIndexPath:(NSIndexPath *)indexPath {
+    APTableSectionViewModel *section = self.sections[indexPath.section];
+    [section insertCell:cellViewModel atIndex:indexPath.row];
+}
+
+- (int)sectionIndexFromIndexPaths:(NSArray *)indexPaths {
+    int sectionIndex = -1;
+    for (NSIndexPath *indexPath in indexPaths) {
+        if (indexPath.section != sectionIndex &&
+            sectionIndex == -1) {
+            sectionIndex = indexPath.section;
+        } else if (indexPath.section != sectionIndex &&
+                   sectionIndex != -1) {
+            NSLog(@"Error: attempted to insert multiple cells in multiple sections");
+            return -2;
+        }
+    }
+    return sectionIndex;
+}
+
+- (void)insertCells:(NSArray *)cells atIndexPaths:(NSArray *)indexPaths {
+    int sectionIndex = [self sectionIndexFromIndexPaths:indexPaths];
+    if (sectionIndex >= 0) {
+        APTableSectionViewModel *section = self.sections[sectionIndex];
+        [section insertCells:cells atIndexes:indexPaths];
+    }
+}
+
+- (void)deleteCellsAtIndexPaths:(NSArray *)indexPaths {
+    int sectionIndex = [self sectionIndexFromIndexPaths:indexPaths];
+    if (sectionIndex >= 0) {
+        APTableSectionViewModel *section = self.sections[sectionIndex];
+        [section deleteCellsAtIndexPaths:indexPaths];
+    }
+}
+
+- (void)deleteCellAtIndex:(int)index {
+    [self.firstSection deleteCellAtIndex:index];
+}
+
+- (void)deleteCellAtIndexPath:(NSIndexPath *)indexPath {
+    APTableSectionViewModel *section = self.sections[indexPath.section];
+    [section deleteCellAtIndex:indexPath.row];
+}
+
+- (void)moveCellAtIndex:(int)index toIndex:(int)toIndex {
+    LOG_LINE
+}
+
+- (void)moveCellAtIndexPath:(NSIndexPath *)indexPath toIndexPath:(NSIndexPath *)toIndexPath {
+    LOG_LINE    
 }
 
 
@@ -119,6 +190,16 @@
     
     return cell;
 }
+
+//- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+//
+//}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"style = %d indexPath = %@", editingStyle, indexPath);
+}
+
+
 
 #pragma mark - UITableViewDelegate
 
