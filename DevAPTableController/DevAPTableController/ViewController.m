@@ -20,6 +20,8 @@
     [self manyCellsWithColors];
 }
 
+
+
 - (void)customNib {
     [self.tableController reloadWithData:@{
         kObject  : @{
