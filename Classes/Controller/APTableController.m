@@ -212,7 +212,13 @@
 }
 
 - (void)deleteSections:(NSArray *)sections {
-    
+    [self.sections removeObjectsInArray:sections];
+    [self.tableView beginUpdates];
+    for (APTableSectionViewModel *section in sections) {
+        [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:section.sectionIndex]
+                      withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
+    [self.tableView endUpdates];
 }
 
 #pragma mark - UITableViewDataSource

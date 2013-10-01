@@ -23,9 +23,8 @@ void after(NSTimeInterval timeInterval, void(^block)(void)) {
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    [self insertSections];
+    [self deleteSections];
 }
-
 
 
 - (void)customNib {
@@ -181,7 +180,7 @@ void after(NSTimeInterval timeInterval, void(^block)(void)) {
     });
 }
 
-- (void)removeSection {
+- (void)deleteSection {
     [self manySections];
     
     after(2, ^{
@@ -189,8 +188,15 @@ void after(NSTimeInterval timeInterval, void(^block)(void)) {
     });
 }
 
-- (void)removeSections {
+- (void)deleteSections {
+    [self manySections];
     
+    after(2, ^{
+        [self.tableController deleteSections:@[
+            self.tableController.sections[0],
+            self.tableController.sections[2]
+        ]];
+    });
 }
 
 - (void)pullToReferesh {
