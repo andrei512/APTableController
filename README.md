@@ -1,7 +1,7 @@
 APTableController
 =================
 
-! Work in progress
+Check out the [tutorial](Tutorial.md) ! Work in progress
 
 ### A simple cell
 
