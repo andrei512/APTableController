@@ -3,15 +3,16 @@
 Table views are one of the most used components from UIKit.. 
 
 One of the things I disliked about table views is all the boilerplate that comes along:
-* register the cells
+* register a nib for each of the cells respective unique identifier
 * return the numbers of sections and cells in every section (witch is ussually the count of an array..)
-* implement tablView:cellForRowAtIndexPath: 
+* implement _tableView:cellForRowAtIndexPath:_ 
 
 All of that everythime so you could add a table view to a controller, and a lot more if you what to do things like deleting a cell.
+The worst part is that you have to do the same work all over again the next time.
 
 Another thing that bothered me was that the API felt a bit backwards, like asking for the cell height and after for the cell instead of asking just for the cell.
 
-Let me give you another example. Lets say you have a list of items in a store in your app.
+Let me give you another example. Lets say you have a list of items(like blog posts) in your app.
 This is a common way to implement that:
 ``` objective-c
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -63,6 +64,7 @@ All of this in order to add a different type of cell to the table view.
 }
 ```
 
+If the cells have different height you have to implement the same "_if else if else ..._" structure. This also applies for any cell type customization (like handling editing and selection events).
 
 If you have multiple types of cells in a table view your code it usually looks like 
 
@@ -83,6 +85,15 @@ If you have multiple types of cells in a table view your code it usually looks l
 ```
 
 With a few abstractions we can create tables with much less code and much more flexibility.
+
+What should be fixed:
+* no more "_if else if else ..._" structures
+* the code related to a section or cell should not change if we add or remove other types in a table view
+* reduce the amount of boilerplate that is required to power up a table view
+* make it as easy as posible to show any kind of list (by default just show the description of an object in the _textLabel_ of the table view cell)
+* code should not change if the order of cells changes
+* it should not be required to create subclasses in order to customize cells
+
 
 ## Cell and Section View Models
 
