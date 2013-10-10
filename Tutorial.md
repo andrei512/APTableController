@@ -84,6 +84,7 @@ If you have multiple types of cells in a table view your code it usually looks l
 }
 ```
 
+
 With a few abstractions we can create tables with much less code and much more flexibility.
 
 What should be fixed:
@@ -99,29 +100,72 @@ What should be fixed:
 
 A Cell View Model is an object who contains information about creating and using a cell. 
 
-A cell view model is responsible for creating, reusing and loading the cell view.
+
 The cell model uses the nib property to create the cell view nib and registeres it to the cell identifiers.
 The behaviour of the cell can be customized with a few block properties like onLoad, onSelect, beforeReuse, that will be called by the controller.
 
 The section view model is similar to the cell view model but it properties are used to customize the behaviour of a section.
 This incluse setting the onLoad, onSelect.. callbacks automatically for all the cells in the section.
 
+```objc
+@interface APTableCellViewModel : NSObject
 
+@property (nonatomic, strong) NSString *cellIdentifier;
+@property (nonatomic, strong) NSString *nibName;
+@property (nonatomic, strong) NSObject *object;
+
+// blocks and magic
+@property (nonatomic, copy) APTableViewCellActionBlock onLoad;
+@property (nonatomic, copy) APTableViewCellActionBlock beforeReuse;
+@property (nonatomic, copy) APTableViewActionBlock onSelect;
+
+// references
+@property (nonatomic, weak) UIViewController *viewController;
+@property (nonatomic, weak) UITableView *tableView;
+@property (nonatomic, strong) NSIndexPath *indexPath;
+
+
+...
+
+@end
+
+```
 
 
 ## Table Controller
 
-The Controller implements boath UITableViewDataSource and UITableViewDelegate protocols and uses section/cell view models to implement them.
-The controller alse has an interface for applying changes to the current #model.
+The Controller implements both UITableViewDataSource and UITableViewDelegate protocols and uses section/cell view models to implement them.
+The controller alse has an interface for applying changes to the current models.
+A controller is responsible for creating, reusing and loading the table cell views.
+
+```objc
+
+```
+
+
+
 
 ## Data normalization
 
-Data normalization is a hack i use when writing general components. It's a convention based on the expected input of a method.
-For example - (void)reloadWithData:(id)data expects to receive a list of sections to be shown in a table view. 
-If I where to give it only one section i could create a list with that section and have a list of sections.
-If a single cell view model is given then i could create a section with that cell and use the previous steps to remove the ambiguity in the input.
-This also applies to a list of cells.
-One could also create a section or cell with the information stored in a hash.
+Data normalization is a hack I use when writing components that use a complex data source. It's a convention based on the expected input of a method.
+For example - (void)reloadWithData:(id)data expects to receive a list of section view models to be shown in a table view. 
+Every section has a list of cell view models.
+
+The main ideea is that for partial inputs we can reproduce a "correct" input:
+
+* If only one section view model is given we can create a list with that one
+* For a list of cell view models we can create a section view model and use the previous logic
+* If a single cell view model is given then we could create a list with that one
+* One could also create a section or cell view model with the information stored in a hash using
+```objc
++ (instancetype)cellModelWithHash:(NSDictionary *)hash;
+```
+
+* Every object can be converted into a cell view model using the 
+```objc
++ (instancetype)cellModelWithObject:(id)object;
+``` 
+
 
 This is implemented in the following way.
 
@@ -149,9 +193,9 @@ NSObject+_ConsumerClass_.m :
 @end
 ```
 
-Now if you add a category on NSArray you could handle different kind of list inputs.
+Now if you add a category on _NSArray you could handle different kind of list inputs.
 
-For example this is how APTableController handles list inputs:
+For example this is how **_APTableController_** handles list inputs:
 
 ```objc
 @implementation NSArray (APTableController)
@@ -180,7 +224,7 @@ For example this is how APTableController handles list inputs:
 @end
 ```
 
-
+This pattern can be combined for multiple data types like cells and section.
 
 
 
