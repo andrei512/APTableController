@@ -114,7 +114,61 @@ One could also create a section or cell with the information stored in a hash.
 
 This is implemented in the following way.
 
-You create a category on NSObject named _asExpectedInput_
+You create a category on NSObject named _ConsumerClass_ that implements - (_ExpectedInputClass_)_asExpectedInput_
+
+NSObject+_ConsumerClass_.h :
+
+```objc
+@interface NSObject (ConsumerClass)
+
+- (ExpectedInputClass *)asExpectedInput;
+
+@end
+```
+
+NSObject+_ConsumerClass_.m :
+
+```objc
+@implementation NSObject (ConsumerClass)
+
+- (ExpectedInputClass *)asExpectedInput {
+    return [ExpectedInputClass createWithObject:self];
+}
+
+@end
+```
+
+Now if you add a category on NSArray you could handle different kind of list inputs.
+
+For example this is how APTableController handles list inputs:
+
+```objc
+@implementation NSArray (APTableController)
+
+- (NSMutableArray *)asTableSectionViewModels {
+    BOOL foundArray = NO;
+    for (NSObject *object in self) {
+        if ([object isKindOfClass:[NSArray class]] == YES) {
+            foundArray = YES;
+            break;
+        }
+    }
+    
+    if (foundArray == YES) {
+        return [self mapWithSelector:@selector(asTableSectionViewModel)];
+    } else {
+        return @[[self asTableSectionViewModel]].mutableCopy;
+    }
+}
+
+- (APTableSectionViewModel *)asTableSectionViewModel {
+    NSArray *cells = [self mapWithSelector:@selector(asCellViewModel)];
+    return [APTableSectionViewModel sectionWithCells:cells];
+}
+
+@end
+```
+
 
 
 
