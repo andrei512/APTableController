@@ -8,13 +8,13 @@ Check out the [tutorial](Tutorial.md) ! Work in progress
 ``` objective-c
 [self.tableController reloadWithData:@"A simple cell"];
 ```
-![One cell](http://i.imgur.com/SdXQe2Z.png)
+![One cell](http://i.imgur.com/f3MCU5i.png)
 
 ### Many cells
 ``` objective-c
 [self.tableController reloadWithData:@[@"cell #1", @"cell #2", @"cell #3"]];
 ```
-![Many cells](http://i.imgur.com/jXPYCUi.png)
+![Many cells](http://i.imgur.com/Ii1AOOO.png)
 
 ### Custom loading
 ``` objective-c
@@ -29,7 +29,7 @@ Check out the [tutorial](Tutorial.md) ! Work in progress
     @"cell #3"
 ]];
 ```
-![Many cells with color](http://i.imgur.com/fHJc1RQ.png)
+![Many cells with color](http://i.imgur.com/9kNudXi.png)
 
 ### Handling didSelect
 ``` objective-c
@@ -48,7 +48,7 @@ Check out the [tutorial](Tutorial.md) ! Work in progress
     @"cell #3"
 ]];
 ```
-![Many cells with action](http://i.imgur.com/bZXSe3h.png)
+![Many cells with action](http://i.imgur.com/TLkR816.png)
 
 ### Many sections
 ``` objective-c
