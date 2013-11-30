@@ -1,20 +1,36 @@
 # APTableViewController - Table views made easy
 
-Table views are one of the most used components from UIKit.. 
+Most iOS app use table views in a way or another to display lists of data. Objective-C and iOS has changed a lot recently. Table views on the other hand got only a few improvments. In this article I will try to discuss the problems UITableView has and a solution to them.
 
-One of the things I disliked about table views is all the boilerplate that comes along:
+One of the things I disliked about table views is all the [boilerplate](http://en.wikipedia.org/wiki/Boilerplate_code) that comes along:
 * register a nib for each of the cells respective unique identifier
 * return the numbers of sections and cells in every section (witch is ussually the count of an array..)
 * implement _tableView:cellForRowAtIndexPath:_ 
 
-All of that everythime so you could add a table view to a controller, and a lot more if you what to do things like deleting a cell.
-The worst part is that you have to do the same work all over again the next time.
+All of that so you could add a table view to a controller, and a lot more if you what to enable other features.
+The worst part is that you have to do the same work all over again the next time you use a table view.
 
-Another thing that bothered me was that the API felt a bit backwards, like asking for the cell height and after for the cell instead of asking just for the cell.
+Another thing that bothered me was that the API felt a bit backwards sometimes, like asking for the cell height and after for the cell instead of asking just for the cell.
 
-Let me give you another example. Lets say you have a list of items(like blog posts) in your app.
+Lets say you have a list of items(like blog posts) in your app and you want to show them in a table view.
 This is a common way to implement that:
 ``` objective-c
+- (void)viewDidLoad {
+    ...
+    
+    [self.tableView registerNib:[UINib nibWithNibName:@"ItemCell" bundle:nil]
+         forCellReuseIdentifier:@"itemCellReuseIdentifier"];
+
+    ...
+}
+
+
+...
+
+- (int)tableView:(UITableView *)tableView numberOfRowsInSection:(int)sectionIndex {
+  return self.items.count;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ItemCell *cell = [tableView dequeueReusableCellWithIdentifier:@"itemCellReuseIdentifier"];
   
@@ -25,9 +41,9 @@ This is a common way to implement that:
 }
 ```
 
-Now let's suppose you want to add a ad banner after the second item in the table.
-You have to change the code a little: 
-* increase the number of cells that the section contains by one.
+Now let's suppose you want to add a ad banner after the second item in the table view.
+You have to change the code a little in order to do that: 
+* increase the number of cells that the table view contains by one.
 * check if the current index is a item or an ad. 
 * if it's an ad return the ad cell.
 * otherwise get the correct index of the item, load the item into a ItemCell and then return it.
