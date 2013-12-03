@@ -86,3 +86,5 @@ Check out the [tutorial](Tutorial.md) ! Work in progress
 ### cellIdentifier
 ### cell height - just change the cell frame
 ### etc.
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/andrei512/aptablecontroller/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
