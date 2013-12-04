@@ -1,6 +1,6 @@
 # APTableViewController - Table views made easy
 
-Most iOS app use table views in a way or another to display lists of data. Objective-C and iOS has changed a lot recently. Table views on the other hand got only a few improvements. In this article I will try to discuss the problems UITableView has and a solution to them.
+Most iOS app use table views in a way or another to display lists of data. Objective-C and iOS has changed a lot recently. Table views on the other hand got only a few improvements. Let's discuss the problems UITableView has and a solution to them.
 
 One of the things I disliked about table views is all the [boilerplate](http://en.wikipedia.org/wiki/Boilerplate_code) that comes along:
 * register a nib for each of the cells respective unique identifier
