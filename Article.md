@@ -1,4 +1,4 @@
-# APTableViewController - Table views made easy
+# Table views made easy
 
 Most iOS app use table views in a way or another to display lists of data. Objective-C and iOS has changed a lot recently. Table views on the other hand got only a few improvements. Let's discuss the problems UITableView has and a solution to them.
 
