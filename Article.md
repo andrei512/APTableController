@@ -100,9 +100,8 @@ If you have multiple types of cells in a table view your code it usually looks l
 ```
 ## Stop writing [spaghetti code](http://en.wikipedia.org/wiki/Spaghetti_code)
 
-With a few abstractions we can create tables with less code and more flexibility.
-
 What should be fixed:
+
 * no more "_if else if else ..._" structures
 * the code related to a section or cell should not change if we add or remove other types in a table view
 * reduce the amount of boilerplate that is required to power up a table view
@@ -110,17 +109,14 @@ What should be fixed:
 * code should not change if the order of cells changes
 * it should not be required to create subclasses in order to customize cells
 
-## Cell and Section View Models
 
-We can get rid of the "_if else if else ..._" structures by using [polymorphism](http://en.wikipedia.org/wiki/Polymorphism_(computer_science)
-
-A Cell View Model is an object who contains information about creating and using a cell. 
+## Cell Model 
 
 The cell model will be resposable for creating a new cell either by registering a nib file or programmatically.
 The behaviour of the cell can be customized with a few block properties for events like onLoad, onSelect, beforeReuse, that will be called by the controller.
 
-The section view model is similar to the cell view model but it is used to customize the behaviour of a section and its cells.
-This includes setting the onLoad, onSelect.. callbacks automatically for all the cells in the section.
+The section view model is similar but it is used to customize the behaviour of a section and its cells.
+This includes customizing onLoad, onSelect.. for all the cells in the section.
 
 ```objc
 @interface APTableCellViewModel : NSObject
@@ -245,6 +241,10 @@ For example this is how **_APTableController_** handles list inputs:
 
 This pattern can be combined for multiple data types like cells and section.
 
+## Other things
+
+* The to change the size of a cell all that is needed is to change the frame in the loadModel method.
+* 
 
 
 
