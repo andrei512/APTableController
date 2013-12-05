@@ -5,34 +5,34 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>A8C0981B-F8BD-433D-9FE7-15C3911E29C2</string>
+	<string>5480D68B-FE33-4072-B276-C5B9853387EA</string>
 	<key>IDESourceControlProjectName</key>
 	<string>DevAPTableController</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>774A8F28-E37B-477D-8C6F-8BAF1CC10500</key>
-		<string>https://github.com/andrei512/APTableController</string>
+		<key>108DD272-EECD-4B4A-96D2-43CA3EFEF185</key>
+		<string>https://github.com/andrei512/APTableController.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>DevAPTableController/DevAPTableController.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>774A8F28-E37B-477D-8C6F-8BAF1CC10500</key>
+		<key>108DD272-EECD-4B4A-96D2-43CA3EFEF185</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/andrei512/APTableController</string>
+	<string>https://github.com/andrei512/APTableController.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>774A8F28-E37B-477D-8C6F-8BAF1CC10500</string>
+	<string>108DD272-EECD-4B4A-96D2-43CA3EFEF185</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>774A8F28-E37B-477D-8C6F-8BAF1CC10500</string>
+			<string>108DD272-EECD-4B4A-96D2-43CA3EFEF185</string>
 			<key>IDESourceControlWCCName</key>
 			<string>APTableController</string>
 		</dict>
