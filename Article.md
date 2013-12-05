@@ -24,7 +24,6 @@ This is a common way to implement that:
     ...
 }
 
-
 ...
 
 - (int)tableView:(UITableView *)tableView numberOfRowsInSection:(int)sectionIndex {
@@ -80,7 +79,7 @@ All of this in order to add a different type of cell to the table view.
 }
 ```
 
-If the cells have different height you have to implement the same "_if else if else ..._" structure. This also applies for any cell type customization (like handling editing and selection events).
+If the cells have different height you have to implement the same "_if else if else ..._" structure. This affects almost all delegate methods. 
 
 If you have multiple types of cells in a table view your code it usually looks like 
 
@@ -99,9 +98,9 @@ If you have multiple types of cells in a table view your code it usually looks l
     }
 }
 ```
+## Stop writing [spaghetti code](http://en.wikipedia.org/wiki/Spaghetti_code)
 
-
-With a few abstractions we can create tables with much less code and much more flexibility.
+With a few abstractions we can create tables with less code and more flexibility.
 
 What should be fixed:
 * no more "_if else if else ..._" structures
@@ -111,17 +110,17 @@ What should be fixed:
 * code should not change if the order of cells changes
 * it should not be required to create subclasses in order to customize cells
 
-
 ## Cell and Section View Models
+
+We can get rid of the "_if else if else ..._" structures by using [polymorphism](http://en.wikipedia.org/wiki/Polymorphism_(computer_science)
 
 A Cell View Model is an object who contains information about creating and using a cell. 
 
+The cell model will be resposable for creating a new cell either by registering a nib file or programmatically.
+The behaviour of the cell can be customized with a few block properties for events like onLoad, onSelect, beforeReuse, that will be called by the controller.
 
-The cell model uses the nib property to create the cell view nib and registeres it to the cell identifiers.
-The behaviour of the cell can be customized with a few block properties like onLoad, onSelect, beforeReuse, that will be called by the controller.
-
-The section view model is similar to the cell view model but it properties are used to customize the behaviour of a section.
-This incluse setting the onLoad, onSelect.. callbacks automatically for all the cells in the section.
+The section view model is similar to the cell view model but it is used to customize the behaviour of a section and its cells.
+This includes setting the onLoad, onSelect.. callbacks automatically for all the cells in the section.
 
 ```objc
 @interface APTableCellViewModel : NSObject
@@ -140,39 +139,34 @@ This incluse setting the onLoad, onSelect.. callbacks automatically for all the 
 @property (nonatomic, weak) UITableView *tableView;
 @property (nonatomic, strong) NSIndexPath *indexPath;
 
-
 ...
 
 @end
 
 ```
 
-
 ## Table Controller
 
-The Controller implements both UITableViewDataSource and UITableViewDelegate protocols and uses section/cell view models to implement them.
-The controller alse has an interface for applying changes to the current models.
+The Controller implements both UITableViewDataSource and UITableViewDelegate protocols and uses section/cell view models to populate the table view.
 A controller is responsible for creating, reusing and loading the table cell views.
+The controller also has an interface for applying changes to the current models.
 
 ```objc
 
 ```
 
-
-
-
 ## Data normalization
 
 Data normalization is a hack I use when writing components that use a complex data source. It's a convention based on the expected input of a method.
-For example - (void)reloadWithData:(id)data expects to receive a list of section view models to be shown in a table view. 
+For example the table controller method - (void)reloadWithData:(id)data expects to receive a list of section view models to be shown in a table view. 
 Every section has a list of cell view models.
 
-The main ideea is that for partial inputs we can reproduce a "correct" input:
+The trick is that by providing partial inputs we can reproduce a "complete" input:
 
 * If only one section view model is given we can create a list with that one
-* For a list of cell view models we can create a section view model and use the previous logic
+* For a list of cell view models we can create a section view model and use the previous logic to complete
 * If a single cell view model is given then we could create a list with that one
-* One could also create a section or cell view model with the information stored in a hash using
+* One could also create a section or cell view model with the information stored in a hash using 
 ```objc
 + (instancetype)cellModelWithHash:(NSDictionary *)hash;
 ```
@@ -181,7 +175,6 @@ The main ideea is that for partial inputs we can reproduce a "correct" input:
 ```objc
 + (instancetype)cellModelWithObject:(id)object;
 ``` 
-
 
 This is implemented in the following way.
 
