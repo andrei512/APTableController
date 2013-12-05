@@ -1,9 +1,9 @@
 APTableController
 =================
 
-I started working on this [article](Article.md).. 
+I started working on a [tutorial](HowToUse.md) and this [article](Article.md) that get into more depth. 
 
-## Examples
+## Quick Examples
 
 ### A simple cell
 
