@@ -152,8 +152,18 @@ A controller is responsible for creating, reusing and loading the table cell vie
 The controller also has an interface for applying changes to the current models.
 
 ```objc
+@interface APTableController : NSObject <UITableViewDelegate, UITableViewDataSource>
 
+@property (nonatomic, weak) IBOutlet UIViewController *viewController;
+@property (nonatomic, strong) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) NSMutableArray *sections;
+
+// tons of ceonveninece methods
+
+@end
 ```
+
+It has IBOutlets for the view controller and table view so that the [integration](HoToUse.md) can be done from interface builder.
 
 ## Data normalization
 
