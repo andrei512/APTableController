@@ -1,7 +1,7 @@
 APTableController
 =================
 
-I started working on a [tutorial](HowToUse.md) and this [article](Article.md) that get into more depth. 
+I started working on a [tutorial](HowToUse.md) and this [article](Article.md) that gets into more depth. 
 
 ## Quick Examples
 
