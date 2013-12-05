@@ -166,7 +166,7 @@ The controller is responsible for creating, reusing and loading the table cell v
 
 It has IBOutlets for the view controller and table view so that the [integration](HowToUse.md) can be done from interface builder.
 
-## Cell Model 
+## Cell and Section Models
 
 The cell model will be resposable for creating a new cell either by registering a nib file or programmatically.
 The behaviour of the cell can be customized with a few block properties for events like onLoad, onSelect, beforeReuse, that will be called by the controller.
@@ -196,6 +196,11 @@ This includes customizing onLoad, onSelect.. for all the cells in the section.
 @end
 
 ```
+
+## What does this accomplish?
+
+<recreate the initial example with the current code>
+<explain whats missing>
 
 ## Data normalization
 
@@ -277,7 +282,7 @@ For example this is how **_APTableController_** handles list inputs:
 
 This pattern can be combined for multiple data types like cells and section.
 
-## Other things
+## Other things 
 
 * The to change the size of a cell all that is needed is to change the frame in the loadModel method.
 * 
