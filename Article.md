@@ -109,6 +109,62 @@ What should be fixed:
 * code should not change if the order of cells changes
 * it should not be required to create subclasses in order to customize cells
 
+## Table Controller
+
+The Controller implements both UITableViewDataSource and UITableViewDelegate protocols and uses section/cell view models to populate the table view.
+The controller is responsible for creating, reusing and loading the table cell views, also it has an interface for applying changes to the current models and displaying the changes(ex. removing a cell from the table).
+
+```objc
+@interface APTableController : NSObject <UITableViewDelegate, UITableViewDataSource>
+
+@property (nonatomic, weak) IBOutlet UIViewController *viewController;
+@property (nonatomic, strong) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) NSMutableArray *sections;
+
+- (void)reloadWithData:(id)data;
+- (void)reloadTableView:(UITableView *)tableView withData:(NSObject *)data;
+
+- (int)numberOfSections;
+- (int)numberOfRowsInSection:(int)sectionIndex;
+
+- (void)realoadTableView;
+
+- (APTableCellViewModel *)cellViewModelAtIndexPath:(NSIndexPath *)indexPath;
+
+- (NSMutableArray *)sectionsFromData:(NSObject *)data;
+
+// Inserting, Deleting, and Moving Rows and Sections
+
+- (void)insertCell:(APTableCellViewModel *)cellViewModel;// in the first section at the end
+- (void)insertCell:(APTableCellViewModel *)cellViewModel atIndex:(int)index;//in the first section
+- (void)deleteCellAtIndex:(int)index; // in the first section
+
+- (void)insertCell:(APTableCellViewModel *)cellViewModel atIndexPath:(NSIndexPath *)indexPath;
+- (void)deleteCellAtIndexPath:(NSIndexPath *)indexPath;
+
+- (void)insertCells:(NSArray *)cells atIndexPaths:(NSArray *)indexPaths;// the cells have to be in the same section
+- (void)deleteCellsAtIndexPaths:(NSArray *)indexPaths;
+
+- (void)moveCellAtIndex:(int)index toIndex:(int)toIndex; // first section
+- (void)moveCellAtIndexPath:(NSIndexPath *)indexPath toIndexPath:(NSIndexPath *)toIndexPath;
+
+// Sections
+- (void)insertSection:(APTableSectionViewModel *)section;
+- (void)insertSections:(NSArray *)sections;
+
+- (void)insertSection:(APTableSectionViewModel *)section atIndex:(int)index;
+- (void)insertSections:(NSArray *)sections atIndex:(int)index;
+
+- (void)deleteSectionAtIndex:(int)index;
+- (void)deleteSectionAtIndexes:(NSArray *)indexes;
+
+- (void)deleteSection:(APTableSectionViewModel *)section;
+- (void)deleteSections:(NSArray *)sections;
+
+@end
+```
+
+It has IBOutlets for the view controller and table view so that the [integration](HoToUse.md) can be done from interface builder.
 
 ## Cell Model 
 
@@ -140,26 +196,6 @@ This includes customizing onLoad, onSelect.. for all the cells in the section.
 @end
 
 ```
-
-## Table Controller
-
-The Controller implements both UITableViewDataSource and UITableViewDelegate protocols and uses section/cell view models to populate the table view.
-A controller is responsible for creating, reusing and loading the table cell views.
-The controller also has an interface for applying changes to the current models.
-
-```objc
-@interface APTableController : NSObject <UITableViewDelegate, UITableViewDataSource>
-
-@property (nonatomic, weak) IBOutlet UIViewController *viewController;
-@property (nonatomic, strong) IBOutlet UITableView *tableView;
-@property (nonatomic, strong) NSMutableArray *sections;
-
-// tons of ceonveninece methods
-
-@end
-```
-
-It has IBOutlets for the view controller and table view so that the [integration](HoToUse.md) can be done from interface builder.
 
 ## Data normalization
 
