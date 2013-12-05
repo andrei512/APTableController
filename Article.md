@@ -164,7 +164,7 @@ The controller is responsible for creating, reusing and loading the table cell v
 @end
 ```
 
-It has IBOutlets for the view controller and table view so that the [integration](HoToUse.md) can be done from interface builder.
+It has IBOutlets for the view controller and table view so that the [integration](HowToUse.md) can be done from interface builder.
 
 ## Cell Model 
 
