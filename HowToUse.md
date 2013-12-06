@@ -54,6 +54,11 @@ If you run the project it should look like this:
 
 #### Programmatically
 
+1. add properties for the table view and the table controller
+2. create and add the table view to the view
+3. create the controller and set the viewController and tableView properties
+4. load any data into the table :)
+
 ViewController.h:
 
 ```Objective-C
