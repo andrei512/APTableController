@@ -66,10 +66,10 @@
 }
 
 - (void)bind:(id)model onKey:(NSString *)key with:(UIView *)view {
-    LOG_LINE
-    PO(model)
-    PO(key)
-    PO(view)
+//    LOG_LINE
+//    PO(model)
+//    PO(key)
+//    PO(view)
 }
 
 @end

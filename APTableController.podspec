@@ -6,7 +6,7 @@ Pod::Spec.new do |s|
   s.description  = <<-DESC
                    DESC
   s.homepage     = "https://github.com/andrei512/APTableController"
-  s.license      = 'MIT (example)'
+  s.license      = 'MIT'
   s.author       = { "andrei512" => "puni.andrei23@gmail.com" }
   s.platform     = :ios, '6.0'
 

@@ -165,11 +165,11 @@
 }
 
 - (void)moveCellAtIndex:(int)index toIndex:(int)toIndex {
-    LOG_LINE
+    // LOG_LINE
 }
 
 - (void)moveCellAtIndexPath:(NSIndexPath *)indexPath toIndexPath:(NSIndexPath *)toIndexPath {
-    LOG_LINE    
+    // LOG_LINE    
 }
 
 //Sections

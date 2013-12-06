@@ -86,6 +86,14 @@
     [self.tableView deleteRowsAtIndexPaths:indexes withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
+- (void)deleteCell:(APTableCellViewModel *)cell {
+    [self deleteCells:@[cell]];
+}
 
+- (void)deleteCells:(NSArray *)cells {
+    [self deleteCells:[cells map:^id(APTableCellViewModel *cell) {
+        return @([self.cells indexOfObject:cell]);
+    }]];
+}
 
 @end
