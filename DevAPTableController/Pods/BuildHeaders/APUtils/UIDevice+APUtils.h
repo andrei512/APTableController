@@ -1,1 +1,1 @@
-../../APUtils/UIDevice+APUtils.h
+../../APUtils/Classes/UIKit/UIDevice/UIDevice+APUtils.h

@@ -1,1 +1,1 @@
-../../APUtils/NSObject+APUtils.h
+../../APUtils/Classes/Foundation/NSObject/NSObject+APUtils.h

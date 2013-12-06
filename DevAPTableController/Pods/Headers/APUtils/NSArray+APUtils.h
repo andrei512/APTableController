@@ -1,1 +1,1 @@
-../../APUtils/NSArray+APUtils.h
+../../APUtils/Classes/Foundation/NSArray/NSArray+APUtils.h

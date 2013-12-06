@@ -1,41 +1,20 @@
 PODS:
-  - APUtils (1.0.0):
-    - MAObjCRuntime
-    - ReactiveCocoa
-  - libwebp (0.3.0-rc7):
-    - libwebp/dec
-    - libwebp/dsp
-    - libwebp/utils
-    - libwebp/webp
-  - libwebp/dec (0.3.0-rc7)
-  - libwebp/dsp (0.3.0-rc7)
-  - libwebp/utils (0.3.0-rc7)
-  - libwebp/webp (0.3.0-rc7)
-  - MAObjCRuntime (0.0.1)
-  - ReactiveCocoa (2.0):
-    - ReactiveCocoa/Core
-    - ReactiveCocoa/no-arc
-    - ReactiveCocoa/RACExtensions
-  - ReactiveCocoa/Core (2.0):
-    - ReactiveCocoa/no-arc
-  - ReactiveCocoa/no-arc (2.0)
-  - ReactiveCocoa/RACExtensions (2.0):
-    - ReactiveCocoa/Core
-  - SDWebImage (3.4):
-    - libwebp
-    - SDWebImage/MapKit
-  - SDWebImage/MapKit (3.4):
-    - libwebp
+  - APUtils (2.0.0):
+    - APUtils/Foundation
+    - APUtils/UIKit
+  - APUtils/Foundation (2.0.0)
+  - APUtils/UIKit (2.0.0):
+    - APUtils/Foundation
+  - SDWebImage (3.5):
+    - SDWebImage/Core
+  - SDWebImage/Core (3.5)
 
 DEPENDENCIES:
   - APUtils
   - SDWebImage
 
 SPEC CHECKSUMS:
-  APUtils: 10ee25d13b049f0052df6e6cc075fccbfae1af3c
-  libwebp: 40517fa1fd3716eded73b4696c45fc0b66e4b414
-  MAObjCRuntime: 284004079156d10cb8237bc3ffcfa3a0e1a0af22
-  ReactiveCocoa: 04f49b91365cc946e7ca327bcfb5765fcea69e76
-  SDWebImage: f13f791e411c632489824aa7f129e230b52bf5c4
+  APUtils: c784727be41442b3c7a3bf8b4d89e53a41807138
+  SDWebImage: f1a72472f8a2d54445f1fedafe2090593d9caf7f
 
-COCOAPODS: 0.25.0
+COCOAPODS: 0.28.0

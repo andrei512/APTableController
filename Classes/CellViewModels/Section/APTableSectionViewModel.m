@@ -91,7 +91,7 @@
 }
 
 - (void)deleteCells:(NSArray *)cells {
-    [self deleteCells:[cells map:^id(APTableCellViewModel *cell) {
+    [self deleteCells:[cells mapWithBlock:^id(APTableCellViewModel *cell) {
         return @([self.cells indexOfObject:cell]);
     }]];
 }

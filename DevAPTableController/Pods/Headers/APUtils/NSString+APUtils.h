@@ -1,1 +1,1 @@
-../../APUtils/NSString+APUtils.h
+../../APUtils/Classes/Foundation/NSString/NSString+APUtils.h

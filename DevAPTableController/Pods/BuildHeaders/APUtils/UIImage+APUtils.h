@@ -1,1 +1,1 @@
-../../APUtils/UIImage+APUtils.h
+../../APUtils/Classes/UIKit/UIImage/UIImage+APUtils.h
