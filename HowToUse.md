@@ -47,6 +47,11 @@ ViewController.m
 @end
 ```
 
+If you run the project it should look like this:
+
+![simple table](http://i.imgur.com/JYprejN.png)
+
+
 #### Programmatically
 
 ViewController.h:
@@ -63,10 +68,6 @@ ViewController.h:
 
 @end
 ```
-
-If you run the project it should look like this:
-
-![simple table](http://i.imgur.com/JYprejN.png)
 
 ViewController.m
 ```Objective-C
