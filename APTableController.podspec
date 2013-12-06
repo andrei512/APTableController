@@ -3,8 +3,7 @@ Pod::Spec.new do |s|
   s.version      = "0.0.1"
   s.summary      = "easy to use table views"
 
-  s.description  = <<-DESC
-                   DESC
+  s.description  = "A data driven controller for iOS table views."
   s.homepage     = "https://github.com/andrei512/APTableController"
   s.license      = 'MIT'
   s.author       = { "andrei512" => "puni.andrei23@gmail.com" }
