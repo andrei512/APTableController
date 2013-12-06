@@ -29,7 +29,7 @@
 - (int)numberOfSections;
 - (int)numberOfRowsInSection:(int)sectionIndex;
 
-- (void)realoadTableView;
+- (void)reloadTableView;
 
 - (APTableCellViewModel *)cellViewModelAtIndexPath:(NSIndexPath *)indexPath;
 

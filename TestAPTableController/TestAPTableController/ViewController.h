@@ -8,11 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import <APTableController/APTableController.h>
+#import <AFNetworking.h>
+#import <APUtils.h>
 
 @interface ViewController : UIViewController
 
+@property (nonatomic, strong) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) IBOutlet APTableController *tableController;
 
-@property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) APTableController *tableController;
+@property (nonatomic, strong) NSArray *posts;
 
 @end

@@ -1,4 +1,22 @@
 PODS:
+  - AFNetworking (2.0.3):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+    - AFNetworking/UIKit
+  - AFNetworking/NSURLConnection (2.0.3):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/NSURLSession (2.0.3):
+    - AFNetworking/NSURLConnection
+  - AFNetworking/Reachability (2.0.3)
+  - AFNetworking/Security (2.0.3)
+  - AFNetworking/Serialization (2.0.3)
+  - AFNetworking/UIKit (2.0.3):
+    - AFNetworking/NSURLConnection
   - APTableController (0.0.1):
     - APUtils
   - APUtils (2.0.0):
@@ -9,6 +27,7 @@ PODS:
     - APUtils/Foundation
 
 DEPENDENCIES:
+  - AFNetworking
   - APTableController (from `https://github.com/andrei512/APTableController.git`)
 
 EXTERNAL SOURCES:
@@ -16,6 +35,7 @@ EXTERNAL SOURCES:
     :git: https://github.com/andrei512/APTableController.git
 
 SPEC CHECKSUMS:
+  AFNetworking: e499052cbf3d743e9bb727bb37adb9dc2547ba15
   APTableController: c9d21936d6c7a7e279881572cf2553a69bce8715
   APUtils: c784727be41442b3c7a3bf8b4d89e53a41807138
 

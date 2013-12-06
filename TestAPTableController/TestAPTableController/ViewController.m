@@ -16,27 +16,48 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    [self addTableController];
     
-    [self loadCells];
-}
-
-- (void)addTableController {
-    self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds
-                                                  style:UITableViewStylePlain];
-    // avoid the status bar
     self.tableView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0);
-    [self.view addSubview:self.tableView];
-    
-    self.tableController = [APTableController new];
-    self.tableController.viewController = self;
-    self.tableController.tableView = self.tableView;
+
+    [self getPosts];
 }
 
-- (void)loadCells {
+- (void)reloadCells {
+    NSMutableArray *cells = [NSMutableArray array];
     
-    [self.tableController reloadWithData:@[@"Testing", @"APTableController"]];
+    for (NSDictionary *post in self.posts) {
+        APTableCellViewModel *cellModel =
+            [APTableCellViewModel cellModelWithObject:post[@"title"]];
+        [cells addObject:cellModel];
+    }
+    
+    APTableSectionViewModel *sectionModel =
+        [APTableSectionViewModel sectionWithCells:cells];
+    
+    NSMutableArray *sections = [NSMutableArray arrayWithObject:sectionModel];
+    
+    self.tableController.sections = sections;
+    
+    [self.tableController reloadTableView];
+}
+
+- (void)getPosts {
+    NSString *postsPath = @"http://www.reddit.com/r/iosprogramming.json";
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager GET:postsPath
+      parameters:nil
+         success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSArray *rawPosts = responseObject[@"data"][@"children"];
+        self.posts = [rawPosts mapWithBlock:^id(NSDictionary *postInfo) {
+            NSLog(@"postInfo = %@", postInfo);
+            return postInfo[@"data"];
+        }];
+             
+        [self reloadCells];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
 }
 
 @end

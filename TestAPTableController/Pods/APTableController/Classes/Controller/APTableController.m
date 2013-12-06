@@ -39,10 +39,10 @@
     self.tableView = tableView;
     self.sections = [self sectionsFromData:data];
     
-    [self realoadTableView];
+    [self reloadTableView];
 }
 
-- (void)realoadTableView {
+- (void)reloadTableView {
     NSMutableSet *registeredIdentifiers = [NSMutableSet set];
     int sectionIndex = 0;
     for (APTableSectionViewModel *section in self.sections) {

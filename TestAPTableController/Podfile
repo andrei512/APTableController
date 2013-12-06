@@ -1,3 +1,4 @@
 platform :ios, '6.0'
 
 pod 'APTableController', :git => "https://github.com/andrei512/APTableController.git"
+pod 'AFNetworking'
