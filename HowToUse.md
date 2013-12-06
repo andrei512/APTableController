@@ -106,3 +106,6 @@ ViewController.m
 
 @end
 ```
+
+### Creating Custom Cells and CellModels
+
