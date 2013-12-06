@@ -6,7 +6,7 @@
 
 You can install APTableController into your project using [cocoapods](http://cocoapods.org)
 
-```
+```ruby
 pod 'APTableController', :git => "https://github.com/andrei512/APTableController.git"
 ```
 
