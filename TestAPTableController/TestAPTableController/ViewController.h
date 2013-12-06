@@ -12,6 +12,7 @@
 @interface ViewController : UIViewController
 
 
-@property (strong, nonatomic) IBOutlet APTableController *tableController;
+@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) APTableController *tableController;
 
 @end

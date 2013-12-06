@@ -16,7 +16,7 @@ EXTERNAL SOURCES:
     :git: https://github.com/andrei512/APTableController.git
 
 SPEC CHECKSUMS:
-  APTableController: 6660d3d02a14bcfb47806327ae87d8e1100371ae
+  APTableController: c9d21936d6c7a7e279881572cf2553a69bce8715
   APUtils: c784727be41442b3c7a3bf8b4d89e53a41807138
 
 COCOAPODS: 0.28.0
