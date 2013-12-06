@@ -8,6 +8,7 @@
 
 #import "NSArray+APTableController.h"
 #import <NSArray+APUtils.h>
+#import "NSObject+APTableController.h"
 
 @implementation NSArray (APTableController)
 
