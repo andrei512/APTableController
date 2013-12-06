@@ -1,0 +1,22 @@
+PODS:
+  - APTableController (0.0.1):
+    - APUtils
+  - APUtils (2.0.0):
+    - APUtils/Foundation
+    - APUtils/UIKit
+  - APUtils/Foundation (2.0.0)
+  - APUtils/UIKit (2.0.0):
+    - APUtils/Foundation
+
+DEPENDENCIES:
+  - APTableController (from `https://github.com/andrei512/APTableController.git`)
+
+EXTERNAL SOURCES:
+  APTableController:
+    :git: https://github.com/andrei512/APTableController.git
+
+SPEC CHECKSUMS:
+  APTableController: 6660d3d02a14bcfb47806327ae87d8e1100371ae
+  APUtils: c784727be41442b3c7a3bf8b4d89e53a41807138
+
+COCOAPODS: 0.28.0

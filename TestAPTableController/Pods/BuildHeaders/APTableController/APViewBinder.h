@@ -1,0 +1,1 @@
+../../APTableController/Classes/CellViewModels/ViewBinder/Base/APViewBinder.h
